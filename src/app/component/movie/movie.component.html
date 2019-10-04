@@ -1,0 +1,45 @@
+<div class="container" *ngIf="movie$ | async as movie">
+  <header
+    class="jumbotron my-4"
+    style="background-size: cover; color: white; background-image: url(https://wallpaperaccess.com/full/42634.jpg)"
+  >
+    <h1 class="display-3" style="font-size: 7vh">
+      "{{ movie.title }}"
+      <span style="font-size: 5vh;">
+        <span [class.checked]="movie.rt_score >= 5" class="fa fa-star "></span>
+        <span [class.checked]="movie.rt_score >= 25" class="fa fa-star "></span>
+        <span [class.checked]="movie.rt_score >= 50" class="fa fa-star "></span>
+        <span [class.checked]="movie.rt_score >= 75" class="fa fa-star"></span>
+        <span [class.checked]="movie.rt_score >= 90" class="fa fa-star"></span>
+        <span>{{ movie.rt_score }}/100</span>
+      </span>
+    </h1>
+    <div style="width: auto; padding: 15px ">
+      <h3 class="lead">"{{ movie.description }}"</h3>
+      <p class="lead">
+        Director : {{ movie.director }} <br />
+        Producer : {{ movie.producer }} <br />
+        Release date : {{ movie.release_date }} <br />
+      </p>
+    </div>
+    <a href="/main" class="btn btn-primary btn-sm " style="margin-left: 15px "
+      >back</a
+    >
+  </header>
+
+  <div class="row text-center">
+    <div *ngFor="let crsl of carousels" class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        <img class="card-img-top" src="{{ crsl.urlImg }}" alt="" />
+        <div class="card-body">
+          <h4 class="card-title">{{ crsl.title }}</h4>
+        </div>
+        <div class="card-footer">
+          <a [routerLink]="['/movie', crsl.id]" class="btn btn-primary"
+            >view More</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

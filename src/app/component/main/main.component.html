@@ -1,0 +1,58 @@
+<div>
+  <!-- Data pada Carousel tidak menggunakan data API karna Image tidak disediakan dalam API -->
+  <app-carousel></app-carousel>
+  <div class="container">
+    <h1 class="my-4">
+      STUDIO GHIBLI
+      <small>Collection Movies</small>
+    </h1>
+    <div class="row">
+      <div *ngFor="let movie of movies" class="col-lg-4 col-sm-6 mb-4">
+        <div
+          class="card h-100"
+          style="background-size: cover;background-image: url(https://www.wallpaperbetter.com/wallpaper/44/316/1000/studio-ghibli-hayao-miyazaki-anime-landscape-anime-sky-720P-wallpaper-middle-size.jpg)"
+        >
+          <div class="card-body" style="color: white">
+            <h4 class="card-title">
+              <a [routerLink]="['/movie', movie.id]">{{ movie.title }}</a>
+            </h4>
+            <div class="card-text text ellipsis" style="color: white">
+              <strong>Director &emsp; : </strong> {{ movie.director }} <br />
+              <strong>Producer&emsp;:</strong> {{ movie.producer }} <br />
+              <strong>Release date : </strong> {{ movie.release_date }} <br />
+              <span class="text-concat">
+                <strong>Description : </strong> {{ movie.description }}
+              </span>
+            </div>
+            <div>
+              <p>
+                <strong>Rate Score &nbsp;:</strong>&nbsp;
+                <span
+                  [class.checked]="movie.rt_score >= 5"
+                  class="fa fa-star "
+                ></span>
+                <span
+                  [class.checked]="movie.rt_score >= 25"
+                  class="fa fa-star "
+                ></span>
+                <span
+                  [class.checked]="movie.rt_score >= 50"
+                  class="fa fa-star "
+                ></span>
+                <span
+                  [class.checked]="movie.rt_score >= 75"
+                  class="fa fa-star"
+                ></span>
+                <span
+                  [class.checked]="movie.rt_score >= 90"
+                  class="fa fa-star"
+                ></span>
+                <span style="font-size: 10pt">{{ movie.rt_score }}/100</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
